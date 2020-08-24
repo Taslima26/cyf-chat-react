@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import Join from './component/Join';
 
-function App() {
+import FetchMessages from './component/FetchMessages';
+import AddMessagesForm from './component/AddMessagesForm';
+
+const App = () => {
+  const [allMessages, setAllMessages] = useState([])
+  const handleMessage = (message) => {
+    setAllMessages(message);
+  }
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+     <div>
+
+      <FetchMessages message={handleMessage} allMessages={allMessages}/>
+      <AddMessagesForm message={handleMessage}/>
     </div>
   );
-}
+};
 
 export default App;
