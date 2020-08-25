@@ -6,18 +6,14 @@ import FetchMessages from './component/FetchMessages';
 import AddMessagesForm from './component/AddMessagesForm';
 
 const App = () => {
-  const [allMessages, setAllMessages] = useState([])
-  const handleMessage = (message) => {
-    setAllMessages(message);
-  }
-
+  
   
   return (
     
      <div>
 
-      <FetchMessages message={handleMessage} allMessages={allMessages}/>
-      <AddMessagesForm message={handleMessage}/>
+      <FetchMessages />
+      <AddMessagesForm/>
     </div>
   );
 };

@@ -2,16 +2,20 @@ import React, {useState, useEffect} from 'react';
 import MessageCard from './MessageCard';
 import AddMessageForm from './AddMessagesForm';
 
-const FetchMessages = ({message,allMessages}) => {
+const FetchMessages = () => {
+  const [allMessages, setAllMessages] = useState([])
   // console.log(message);
   // console.log(allMessages);
+  const handleMessage = (message) => {
+    setAllMessages(message);
+  }
   useEffect(() => {
     fetch(
       `https://taslima-chat-server.glitch.me/messages`,
       
     )
       .then((res) => res.json())
-      .then((data) => message(data));
+      .then((data) => handleMessage(data));
   },[allMessages]);
   
   console.log('All messages', allMessages);
