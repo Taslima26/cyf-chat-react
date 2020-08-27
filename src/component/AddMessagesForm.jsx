@@ -1,9 +1,6 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, {useState, useEffect, createContext} from 'react';
 
-
-const AddMessagesForm = () => {
-  // const [name, setName] = useState([]);
-  // const [message, setMessage] = useState([]);
+const AddMessagesForm = ({handleMessage}) => {
   const [state, setState] = useState({text: '', from: ''});
 
   const handleSubmit = (event) => {
@@ -18,6 +15,7 @@ const AddMessagesForm = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log('success:', data);
+        handleMessage();
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -26,14 +24,6 @@ const AddMessagesForm = () => {
     state.text = '';
     state.from = '';
   };
-
-  // const onSetFrom = (event) => {
-  //   setName(event.target.value);
-  // };
-
-  // const onSetText = (event) => {
-  //   setMessage(event.target.value);
-  // };
 
   function handleChange(event) {
     const value = event.target.value;
