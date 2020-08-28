@@ -1,17 +1,15 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-const DeleteMessage = ({message, handleDeleteMessage}) => {
-  const handleDelete = (id) => {
-    //let id = event.target.id;
-    //console.log(id);
-    return fetch(`https://taslima-chat-server.glitch.me/messages/` + id, {
+const DeleteMessage = ({ message, handleDeleteMessage }) => {
+  const handleDelete = (e) => {
+    fetch(`https://taslima-chat-server.glitch.me/messages/` + message.id, {
       method: 'DELETE',
     })
       .then((response) => response.json())
       .then((data) => console.log('success:', data));
-      handleDeleteMessage();
+    handleDeleteMessage(message.id);
   };
-  
+
 
   return (
     <div>
