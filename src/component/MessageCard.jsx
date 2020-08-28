@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import DeleteMessage from './DeleteMessage';
 
 const MessageCard = ({ messages, handleDelete }) => {
-  const [deleteMessage, setDeleteMessage] = useState();
   const handleDeleteMessage = (id) => {
-    setDeleteMessage(deleteMessage - 1);
-    console.log(deleteMessage);
-    const undeletedMsg = messages.filter(message => message.id === id)
+    const undeletedMsg = messages.filter(message => message.id !== id)
     handleDelete(undeletedMsg)
   };
 
