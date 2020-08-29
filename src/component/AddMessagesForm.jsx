@@ -1,7 +1,7 @@
-import React, {useState, useEffect, createContext} from 'react';
+import React, { useState } from 'react';
 
-const AddMessagesForm = ({handleMessage}) => {
-  const [state, setState] = useState({text: '', from: ''});
+const AddMessagesForm = ({ handleMessage }) => {
+  const [state, setState] = useState({ text: '', from: '' });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -10,7 +10,7 @@ const AddMessagesForm = ({handleMessage}) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({from: state.from, text: state.text}),
+      body: JSON.stringify({ from: state.from, text: state.text }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -27,12 +27,12 @@ const AddMessagesForm = ({handleMessage}) => {
 
   function handleChange(event) {
     const value = event.target.value;
-    setState({...state, [event.target.name]: value});
+    setState({ ...state, [event.target.name]: value });
   }
 
   return (
     <div>
-      <form onSubmit={handleSubmit} style={{width: '50%'}}>
+      <form onSubmit={handleSubmit} style={{ width: '50%' }}>
         <div className="form-group">
           <label htmlFor="name">From</label>
           <input
